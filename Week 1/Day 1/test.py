@@ -1,30 +1,54 @@
-original = [10, 20, 30]
+a = [[1, 2], [3, 4]]
 
-copied = original
+b = a.copy()
 
-copied.append(40)
+b[0] = [100, 200]
+b[1].append(5)
 
-print(original)
-print(copied)
+print(a)
+print(b)
 
-original1 = [10, 20, 30]
+# Answer expected results here:
 
-copied1 = original1.copy()
+# a = [[1,2], [3,4]]
+# b = a.copy()
+# b = [[1,2], [3,4]]
 
-copied1.append(40)
+# b[0] = [100,200]
+# b = [[100,200], [3,4]]
 
-print(original1)
-print(copied1)
+# b[1].append(5)
+# b = [[100,200], [3,4,5]]
 
-# Your challenge
-# Answer these four questions without running the code first:
-# 1. In the first example, why does modifying copied also affect original?
-# 2. In the second example, why does modifying copied NOT affect original?
-# 3. What is the difference between copied = original and copied = original.copy()?
-# 4. Does .copy() create an entirely independent copy of everything inside a list, including nested lists? We'll explore this last question together.
+# 1 - print(a)
+# a = [[100,200] , [3,4]]
 
-# 1 - Modifying copied also affects the original as "copied" is a makes reference to the same object, hence anything affecting the list will be mirrored to all objects referencing to that object
-# 2 - The .copy() function makes a shallow copy of the object and doesn't reference to the same object, hence it won't affect its reference.
-# 3 - The difference between copied = original and copied = original.copy(), this I am not 100% sure. My assumption is regarding its difference is the fact that its not referencing the object
-#     it directly creates a shallow copy of the content within the object, but any changes made to that new object is independent from its referenced and mirrored object.
-# 4 - I am unsure, but I think it is entirely independent copy of everything within the list, including nested lists as well. 
+# 2 - print(b)
+# b = [[100,200], [3,4,5]]
+
+# 3 - b[0] is different to b[1] because of the function being used.
+# when using the .copy() function, it creates a shallow copy of the entire object, the outer list is copied, however the inner or nested list (if any), are independent
+# hence when using the reassignment of b[0] = [100,200], it mirrored the object reference from a, so it effectively reassigns both a and b objects.
+# However, when using append, the original is unaffected because it modifies the outer list, which is independently copied?
+
+# Guided Answer Response:
+# The correct output is:
+
+# a = [[1, 2], [3, 4, 5]]
+# b = [[100, 200], [3, 4, 5]]
+
+# Why?
+
+# Operation #1
+# b[0] = [100,200]
+# This replaces the first element of the outer list (b)
+# It does not modify the inner list that a[0] references.
+
+# Operation #2
+# b[1].append(5)
+
+# This modifies the second inner list.
+# Remember, a[1] and b[1] still reference the same inner list because we used a shallow copy.
+
+# b[0] = [...] replaces an element in the outer list.
+# b[1].append(...) modifies the shared inner list.
