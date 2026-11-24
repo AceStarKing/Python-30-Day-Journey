@@ -1,4 +1,4 @@
-# Day 01 – Back to the Basics
+# Day 02 – Frustration with Lists
 *22-11-2026*
 
 Today's session was a continuation on lists, tuples and dictionaries. Covering list manipulation such as moving within a list, using for loops, and also
